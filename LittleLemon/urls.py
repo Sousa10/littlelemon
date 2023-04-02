@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from reservation.views import BookingViewSet
+
+router = routers.DefaultRouter()
+router.register(r'tables', BookingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservation/', include('reservation.urls')),
+    path('reservation/menu/', include('reservation.urls')),
+    path('reservation/booking/', include(router.urls)),
 ]
