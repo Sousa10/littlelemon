@@ -13,13 +13,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class MenuItemView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+class MenuItemView(generics.ListCreateAPIView, generics.UpdateAPIView):
+    #permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
-class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
-    permission_classes = [IsAuthenticated]
+class SingleMenuItemView(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
